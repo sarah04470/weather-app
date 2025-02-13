@@ -1,23 +1,15 @@
+import Head from "next/head";
 import Layout from "@components/Layout";
 import { getWeatherData } from "@lib/weather_data";
 import WeatherCard from "@components/WeatherCard";
 
-export async function getServerSideProps() {
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, ""); // YYYYMMDD
-  const time = "0600"; // 기상청 기준 시간
-  const nx = 60; // 서울
-  const ny = 127;
-
-  const weatherData = await getWeatherData(today, time, nx, ny);
-
-  return {
-    props: { weatherData },
-  };
-}
-
 export default function WeatherPage({ weatherData }) {
   return (
     <Layout>
+      <Head>
+        <title>서울 날씨 정보</title>
+        <meta name="description" content="서울의 실시간 날씨 정보를 제공합니다." />
+      </Head>
       <h1>서울 날씨</h1>
       {weatherData ? (
         <>
@@ -31,4 +23,20 @@ export default function WeatherPage({ weatherData }) {
       )}
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  const time = "0600"; // 기상청 기준 시간
+  const nx = 60; // 서울
+  const ny = 127;
+
+  const weatherData = await getWeatherData(today, time, nx, ny);
+
+  return {
+    props: {
+      weatherData,
+    },
+    revalidate: 60, // 60초마다 새로운 데이터로 갱신
+  };
 }
