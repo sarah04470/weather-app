@@ -1,0 +1,12 @@
+# 환경 변수 파일 (API Key 보호)
+.env.local
+
+# Next.js 빌드 폴더 (배포 시 필요 없음)
+.next/
+
+# node_modules (패키지 캐시 파일)
+node_modules/
+
+# 로그 파일
+npm-debug.log
+yarn-error.log
