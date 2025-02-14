@@ -1,18 +1,13 @@
-import { useState, useEffect } from "react";
-import { getWeatherData } from "@lib/weather_data";
+import { useEffect, useState } from "react";
 
-export default function useWeather(nx, ny) {
-  const [weather, setWeather] = useState(null);
-  const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-  const time = "0600"; // 기준 시간
+export default function Home() {
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    async function fetchWeather() {
-      const data = await getWeatherData(today, time, nx, ny);
-      setWeather(data);
-    }
-    fetchWeather();
-  }, [nx, ny]);
+    setIsClient(true);
+  }, []);
 
-  return weather;
+  return (
+    <div>{isClient ? <p>클라이언트에서만 보임</p> : <p>SSR에서 보임</p>}</div>
+  );
 }

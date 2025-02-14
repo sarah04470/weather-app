@@ -1,10 +1,10 @@
-import { Card, Title, Value } from "@styles/WeatherCard.styles";
+import { Card } from "@styles/WeatherCard.styles";
 
-export default function WeatherCard({ title, value }) {
+export default function WeatherCard({ title, children }) {
   return (
     <Card>
-      <Title>{title}</Title>
-      <Value>{value}</Value>
+      {title && <h3>{title}</h3>}
+      {children}
     </Card>
   );
 }

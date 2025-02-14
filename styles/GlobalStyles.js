@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     line-height: 1.5;
     font-family: Arial, sans-serif;
-    background-color: #fff;
+    background-color: #313D4B;
     color: #333;
   }
 
