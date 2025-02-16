@@ -4,14 +4,15 @@ import { getCompleteForecast } from "@lib/getWeatherForecast";
 import { WeatherDetailsContainer } from "@styles/WeatherDetails.styles";
 
 export default function WeatherDetails() {
-  const [currentWeather, setCurrentWeather] = useState({});
+  const [detailedWeather, setDetailedWeather] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const { currentWeather } = await getCompleteForecast();
-      setCurrentWeather(currentWeather || {});
+      const { detailedWeather } = await getCompleteForecast();  // ✅ 데이터 받아올 때 변수명 맞추기
+      console.log('받아온 데이터 확인 : ', detailedWeather)
+      setDetailedWeather(detailedWeather || {});
       setLoading(false);
     }
 
@@ -39,7 +40,9 @@ export default function WeatherDetails() {
             <div className="weather-info">
               <p className="weather-label">체감온도</p>
               <div className="weather-value-container">
-                <p className="weather-value">3</p>
+                <p className="weather-value">
+                  {loading ? "..." : `${detailedWeather.feelsLikeTemp || 0}`}
+                </p>
                 <p className="weather-unit">°</p>
               </div>
             </div>
@@ -68,7 +71,9 @@ export default function WeatherDetails() {
             <div className="weather-info">
               <p className="weather-label">강수 확률</p>
               <div className="weather-value-container">
-                <p className="weather-value">0</p>
+                <p className="weather-value">
+                  {loading ? "..." : `${detailedWeather.precipitationProb || 0}`}
+                </p>
                 <p className="weather-unit">%</p>
               </div>
             </div>
@@ -95,10 +100,9 @@ export default function WeatherDetails() {
               </svg>
             </div>
             <div className="weather-info">
-              <p className="weather-label">남서</p>
+              <p className="weather-label">바람 방향</p>
               <div className="weather-value-container">
-                <p className="weather-value">10</p>
-                <p className="weather-unit">km/h</p>
+                <p className="weather-value">{detailedWeather.windDirection ?? "정보 없음"}</p>
               </div>
             </div>
           </li>
@@ -126,7 +130,9 @@ export default function WeatherDetails() {
             <div className="weather-info">
               <p className="weather-label">강수량</p>
               <div className="weather-value-container">
-                <p className="weather-value">0</p>
+                <p className="weather-value">
+                  {loading ? "..." : `${detailedWeather.precipitation || 0}`}
+                </p>
                 <p className="weather-unit">mm</p>
               </div>
             </div>
@@ -163,13 +169,14 @@ export default function WeatherDetails() {
             <div className="weather-info">
               <p className="weather-label">습도</p>
               <div className="weather-value-container">
-                <p className="weather-value">58</p>
+                <p className="weather-value">
+                  {loading ? "..." : `${detailedWeather.humidity || 0}`}
+                </p>
                 <p className="weather-unit">%</p>
               </div>
             </div>
           </li>
-
-          {/* 습도 */}
+          {/* 바람 속도 */}
           <li className="weather-detail-item">
             <div className="weather-icon">
               <svg
@@ -180,15 +187,7 @@ export default function WeatherDetails() {
                 fill="none"
               >
                 <path
-                  d="M3 18C3 18 4.19041 18.4695 5 18.6979C6.985 19.258 8.76547 18.9569 10.5 18.4624M3 12C3 12 4.19041 12.4695 5 12.6979C7.94412 13.5286 10.4383 12.4649 13 11.6853M21 6C21 6 19.8096 5.53048 19 5.30206C13.8797 3.85739 10.1203 8.14261 5 6.69794C4.19041 6.46952 3 6 3 6"
-                  stroke="white"
-                  strokeOpacity="0.6"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M17 21C19.2 21 21 19.17 21 16.95C21 15.79 20.43 14.69 19.29 13.76C18.15 12.83 17.29 11.45 17 10C16.71 11.45 15.86 12.84 14.71 13.76C13.56 14.68 13 15.8 13 16.95C13 19.17 14.8 21 17 21Z"
+                  d="M16.7639 6.5C17.3132 5.88625 18.1115 5.5 19 5.5C20.6569 5.5 22 6.84315 22 8.5C22 10.1569 20.6569 11.5 19 11.5H13M6.7639 4C7.31322 3.38625 8.1115 3 9 3C10.6569 3 12 4.34315 12 6C12 7.65685 10.6569 9 9 9H2M10.7639 20C11.3132 20.6137 12.1115 21 13 21C14.6569 21 16 19.6569 16 18C16 16.3431 14.6569 15 13 15H2"
                   stroke="white"
                   strokeOpacity="0.6"
                   strokeWidth="2"
@@ -198,10 +197,12 @@ export default function WeatherDetails() {
               </svg>
             </div>
             <div className="weather-info">
-              <p className="weather-label">습도</p>
+              <p className="weather-label">바람 속도</p>
               <div className="weather-value-container">
-                <p className="weather-value">58</p>
-                <p className="weather-unit">%</p>
+                <p className="weather-value">
+                  {loading ? "..." : `${detailedWeather.windSpeed || 0}`}
+                </p>
+                <p className="weather-unit">km/h</p>
               </div>
             </div>
           </li>
