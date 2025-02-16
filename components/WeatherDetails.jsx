@@ -10,8 +10,8 @@ export default function WeatherDetails() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const { detailedWeather } = await getCompleteForecast();  // ✅ 데이터 받아올 때 변수명 맞추기
-      console.log('받아온 데이터 확인 : ', detailedWeather)
+      const { detailedWeather } = await getCompleteForecast(); // ✅ 데이터 받아올 때 변수명 맞추기
+      console.log("받아온 데이터 확인 : ", detailedWeather);
       setDetailedWeather(detailedWeather || {});
       setLoading(false);
     }
@@ -72,7 +72,9 @@ export default function WeatherDetails() {
               <p className="weather-label">강수 확률</p>
               <div className="weather-value-container">
                 <p className="weather-value">
-                  {loading ? "..." : `${detailedWeather.precipitationProb || 0}`}
+                  {loading
+                    ? "..."
+                    : `${detailedWeather.precipitationProb || 0}`}
                 </p>
                 <p className="weather-unit">%</p>
               </div>
@@ -102,7 +104,9 @@ export default function WeatherDetails() {
             <div className="weather-info">
               <p className="weather-label">바람 방향</p>
               <div className="weather-value-container">
-                <p className="weather-value">{detailedWeather.windDirection ?? "정보 없음"}</p>
+                <p className="weather-value">
+                  {detailedWeather.windDirection ?? "정보 없음"}
+                </p>
               </div>
             </div>
           </li>
