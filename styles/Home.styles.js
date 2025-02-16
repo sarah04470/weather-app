@@ -189,6 +189,9 @@ export const WeatherLayout = styled.div`
   }
 
   .weekly-forecast {
+    max-height: 700px;
+    gap: 10px;
+    padding: 20px 20px 10px;
     h3 {
       padding-left: 0;
     }

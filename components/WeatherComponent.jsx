@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getWeeklyForecast } from "@lib/getWeatherForecast";
+import { getCompleteForecast } from "@lib/getWeatherForecast";
 import WeatherCard from "@components/WeatherCard";
 import {
   WeeklyForecastContainer,
@@ -11,19 +11,16 @@ import {
 import Image from "next/image";
 
 export default function WeatherComponent() {
-  const [weeklyForecast, setWeeklyForecast] = useState([]);
   const [openIndex, setOpenIndex] = useState(null);
 
-  console.log("getWeeklyForecast:", getWeeklyForecast); // 🔥 콘솔에서 undefined인지 확인
+  const [hourlyForecast, setHourlyForecast] = useState([]);
+  const [tenDayForecast, setTenDayForecast] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      if (!getWeeklyForecast) {
-        console.error("getWeeklyForecast is not defined!"); // ❌ 함수가 없으면 오류 출력
-        return;
-      }
-      const data = await getWeeklyForecast();
-      setWeeklyForecast(data);
+      const { hourly, tenDay } = await getCompleteForecast();
+      setHourlyForecast(hourly || []); // undefined 방지
+      setTenDayForecast(tenDay || []);
     }
     fetchData();
   }, []);
@@ -36,7 +33,7 @@ export default function WeatherComponent() {
     <WeatherCard title="10일간의 일기예보" className="weekly-forecast">
       <WeeklyForecastContainer>
         <WeeklyForecastList>
-          {weeklyForecast.map((item, index) => (
+          {tenDayForecast.map((item, index) => (
             <WeeklyForecastItem key={index}>
               <div
                 className="forecast-summary"

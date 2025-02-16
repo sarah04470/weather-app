@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const WeeklyForecastContainer = styled.div`
   width: 100%;
+  max-height: 100%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 `;
@@ -9,6 +11,13 @@ export const WeeklyForecastContainer = styled.div`
 export const WeeklyForecastList = styled.ul`
   display: flex;
   flex-direction: column;
+  max-height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const WeeklyForecastItem = styled.li`
