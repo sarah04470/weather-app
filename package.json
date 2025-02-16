@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@babel/runtime": "^7.26.9",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "dayjs": "^1.11.13",

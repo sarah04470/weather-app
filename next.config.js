@@ -1,11 +1,10 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
-    images: {
-      unoptimized: true, // Netlify에서 next/image 사용 가능하게 설정
-    },
-  };
-  
-  module.exports = nextConfig;
-  
+  reactStrictMode: true,
+  compiler: {
+    styledComponents: true, // Next.js의 기본 SWC 설정 사용
+  },
+  experimental: {
+    swcPlugins: [["styled-components", { ssr: true }]], // Babel 설정을 SWC로 대체
+  },
+};
+module.exports = nextConfig;
