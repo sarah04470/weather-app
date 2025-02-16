@@ -27,13 +27,6 @@ export const PageContainer = styled.div`
     background: #1e1e2e;
     border-radius: 10px;
   }
-
-  .hourly-forecast,
-  .weekly-forecast {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
 `;
 
 // 검색 바 스타일
@@ -107,6 +100,98 @@ export const WeatherLayout = styled.div`
   }
   .right {
     width: 400px;
+    height: 100%;
+  }
+
+  .hourly-weather {
+    .hourly-list {
+      max-width: 100%;
+      overflow-x: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .hourly-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hourly-temperature {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .weather-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .time-label {
+      text-align: center;
+    }
+  }
+
+  .weather-details {
+    .weather-details-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 22px;
+    }
+    .weather-detail-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .weather-icon {
+      width: 24px;
+      height: 24px;
+      display: flex;
+    }
+    .weather-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .weather-label {
+      font-size: 12px;
+    }
+    .weather-value-container {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      font-size: 24px;
+    }
+  }
+
+  .weekly-forecast {
+    h3 {
+      padding-left: 0;
+    }
   }
 
   @media (max-width: 768px) {
@@ -172,5 +257,9 @@ export const CurrentWeather = styled.div`
     height: 240px;
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 `;
