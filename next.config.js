@@ -9,7 +9,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/weather/:path*",  // 요청 URL
+        source: "/api/weather/:path*", // 요청 URL
         destination: "http://apis.data.go.kr/1360000/:path*", // 기상청 API URL
       },
     ];
