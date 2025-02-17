@@ -47,14 +47,14 @@
 
 ### 🔹 **기상청 단기예보 API**
 
-- `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst`
+- `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst`
 - **현재 날씨, 1~2일 단기 예보 데이터 조회**
 - 기온(TMP), 풍속(WSD), 강수량(PCP), 습도(REH) 등 포함
 
 ### 🔹 **기상청 중기예보 API**
 
-- `https://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa`
-- `https://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst`
+- `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa`
+- `http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst`
 - **3~10일 중기 예보 데이터 조회**
 - 오전/오후 기상 상태(`wfXAm`, `wfXPm`) 및 최고/최저기온(`taMinX`, `taMaxX`) 제공
 

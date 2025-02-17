@@ -108,7 +108,7 @@ export default function Home() {
             <p>
               단기예보 API :{" "}
               <a
-                href="https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+                href="http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -118,7 +118,7 @@ export default function Home() {
             <p>
               중기예보 API :{" "}
               <a
-                href="https://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa"
+                href="http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -140,8 +140,8 @@ export async function getStaticProps() {
         description: "기상청 API를 활용한 SSR 기반 날씨 예보 사이트입니다.",
         ogTitle: "Next.js Weather App",
         ogDescription: "기상청 API를 활용한 SSR 기반 날씨 예보 사이트입니다.",
-        ogUrl: "https://your-weather-app.com",
-        ogImage: "https://your-weather-app.com/images/og-image.png",
+        ogUrl: "https://weather-app-suna.netlify.app",
+        ogImage: "https://weather-app-suna.netlify.app/images/og-image.png",
       },
     },
     revalidate: 60, // 60초마다 재생성
