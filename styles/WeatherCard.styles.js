@@ -19,4 +19,21 @@ export const Card = styled.div`
     line-height: 1.5;
     padding-left: 10px;
   }
+
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 480px) {
+    &.hourly-weather {
+      padding: 20px 10px;
+    }
+
+    &.weather-details,
+    &.weekly-forecast {
+      h3 {
+        padding-left: 0;
+      }
+    }
+  }
 `;

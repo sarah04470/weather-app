@@ -57,11 +57,40 @@ export const CurrentWeatherWrap = styled.div`
   .weather-img {
     width: 240px;
     height: 240px;
-    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     img {
       width: 100%;
       height: auto;
+    }
+  }
+
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 768px) {
+    height: fit-content;
+    padding: 0;
+    padding-left: 20px;
+    .location {
+      gap: unset;
+      justify-content: space-between;
+    }
+    .title h3 {
+      font-size: 28px;
+    }
+
+    .weather-img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 480px) {
+    padding-left: 10px;
+    .title h3 {
+      font-size: 24px;
+    }
+    .weather-img {
+      width: 160px;
+      height: 160px;
     }
   }
 `;

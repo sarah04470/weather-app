@@ -28,6 +28,32 @@ export const PageContainer = styled.div`
     background: #1e1e2e;
     border-radius: 10px;
   }
+
+  @media (max-width: 1200px) {
+    .container {
+      width: fit-content;
+      height: 85%;
+      gap: 20px;
+      padding: 40px 40px 20px 40px;
+      margin-bottom: 40px;
+    }
+  }
+  @media (max-width: 768px) {
+    .container {
+      width: fit-content;
+      height: 85%;
+      gap: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+  }
+  @media (max-width: 480px) {
+    .container {
+      height: 70%;
+      padding: 30px 24px 24px;
+      margin-bottom: 80px;
+    }
+  }
 `;
 
 // 검색 바 스타일
@@ -150,45 +176,6 @@ export const WeatherLayout = styled.div`
     }
   }
 
-  .weather-details {
-    .weather-details-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 22px;
-    }
-    .weather-detail-item {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .weather-icon {
-      width: 24px;
-      height: 24px;
-      display: flex;
-    }
-    .weather-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    .weather-label {
-      font-size: 12px;
-    }
-    .weather-value-container {
-      display: flex;
-      flex-direction: row;
-      gap: 4px;
-      font-size: 24px;
-    }
-  }
-
   .weekly-forecast {
     max-height: 700px;
     gap: 10px;
@@ -198,7 +185,46 @@ export const WeatherLayout = styled.div`
     }
   }
 
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .right {
+      width: 680px;
+      height: 100%;
+    }
+
+    .weekly-forecast {
+      h3 {
+        padding-left: 5px;
+      }
+    }
+  }
   @media (max-width: 768px) {
+    gap: 24px;
+    .left {
+      width: 420px;
+      gap: 24px;
+    }
+    .right {
+      width: 420px;
+    }
+  }
+  @media (max-width: 480px) {
+    gap: 20px;
+    .left {
+      width: 300px;
+      gap: 20px;
+    }
+    .right {
+      width: 300px;
+    }
   }
 `;
 
@@ -227,5 +253,23 @@ export const FooterContainer = styled.footer`
     color: rgba(255, 255, 255, 0.4);
     text-decoration: none;
     cursor: pointer;
+  }
+
+  @media (max-width: 1200px) {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -60px;
+    padding: 0;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 480px) {
+    .api-wrap {
+      flex-direction: column;
+      gap: 2px;
+    }
+    bottom: -80px;
   }
 `;

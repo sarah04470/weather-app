@@ -37,4 +37,22 @@ export const WeatherDetailsContainer = styled.div`
     gap: 4px;
     font-size: 24px;
   }
+
+  @media (max-width: 1200px) {
+  }
+  @media (max-width: 768px) {
+    .weather-details-list {
+      gap: 20px 10px;
+    }
+    .weather-value-container {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  @media (max-width: 480px) {
+    .weather-details-list {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 16px;
+    }
+  }
 `;

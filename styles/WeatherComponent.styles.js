@@ -77,6 +77,26 @@ export const WeeklyForecastItem = styled.li`
       gap: 2px;
     }
   }
+
+  @media (max-width: 1200px) {
+    .forecast-summary {
+      padding: 0 20px;
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 480px) {
+    .forecast-summary {
+      padding: 0 8px;
+      font-size: 12px;
+      grid-template-columns: 22px 1.4fr 0.6fr 20px;
+      gap: 0;
+    }
+    .forecast-icon {
+      gap: 0;
+    }
+  }
 `;
 
 export const ForecastToggle = styled.div`
