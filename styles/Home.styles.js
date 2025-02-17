@@ -200,3 +200,31 @@ export const WeatherLayout = styled.div`
   @media (max-width: 768px) {
   }
 `;
+
+export const FooterContainer = styled.footer`
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 0;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+
+  .api-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  a {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    cursor: pointer;
+  }
+`;

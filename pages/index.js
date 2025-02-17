@@ -7,17 +7,14 @@ import {
   SearchButton,
   Dropdown,
   WeatherLayout,
+  FooterContainer,
 } from "@styles/Home.styles";
-import { getCompleteForecast } from "@lib/getWeatherForecast";
-import { getLocationNameFromCoordinates } from "@lib/fetchLocationName";
 import CurrentWeather from "@components/CurrentWeather";
 import HourlyWeather from "@components/HourlyWeather";
 import WeatherDetails from "@components/WeatherDetails";
 import WeatherComponent from "@components/WeatherComponent";
 
 export default function Home() {
-  // const [hourlyForecast, setHourlyForecast] = useState([]); // ✅ 기본값 [] 설정
-  // const [tenDayForecast, setTenDayForecast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [locationName, setLocationName] = useState("위치 찾기");
 
@@ -104,6 +101,32 @@ export default function Home() {
             <WeatherComponent />
           </div>
         </WeatherLayout>
+        {/* 🔽 API 정보 추가 (container 내부 하단) */}
+        <FooterContainer>
+          <p>🔗 본 서비스는 기상청 OpenAPI 데이터를 활용합니다.</p>
+          <div className="api-wrap">
+            <p>
+              단기예보 API :{" "}
+              <a
+                href="http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                기상청 단기예보 API
+              </a>
+            </p>
+            <p>
+              중기예보 API :{" "}
+              <a
+                href="http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                기상청 중기예보 API
+              </a>
+            </p>
+          </div>
+        </FooterContainer>
       </div>
     </PageContainer>
   );

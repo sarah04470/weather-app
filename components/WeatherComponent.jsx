@@ -51,11 +51,15 @@ export default function WeatherComponent() {
                 </div>
                 <div className="forecast-temp">
                   <p className="temp-low">
-                    <span>{item.tempLow !== "정보 없음" ? item.tempLow : "-"}</span>
+                    <span>
+                      {item.tempLow !== "정보 없음" ? item.tempLow : "-"}
+                    </span>
                     <span>°</span>
                   </p>
                   <p className="temp-high">
-                    <span>{item.tempHigh !== "정보 없음" ? item.tempHigh : "-"}</span>
+                    <span>
+                      {item.tempHigh !== "정보 없음" ? item.tempHigh : "-"}
+                    </span>
                     <span>°</span>
                   </p>
                 </div>
