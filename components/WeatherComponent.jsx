@@ -39,7 +39,7 @@ export default function WeatherComponent() {
                 className="forecast-summary"
                 onClick={() => handleToggle(index)}
               >
-                <p className="forecast-date">{item.date}</p>
+                <p className="forecast-date">{item.day}</p>
                 <div className="forecast-icon">
                   <Image
                     src={item.icon}
@@ -51,11 +51,11 @@ export default function WeatherComponent() {
                 </div>
                 <div className="forecast-temp">
                   <p className="temp-low">
-                    <span>{item.tempLow}</span>
+                    <span>{item.tempLow !== "정보 없음" ? item.tempLow : "-"}</span>
                     <span>°</span>
                   </p>
                   <p className="temp-high">
-                    <span>{item.tempHigh}</span>
+                    <span>{item.tempHigh !== "정보 없음" ? item.tempHigh : "-"}</span>
                     <span>°</span>
                   </p>
                 </div>
@@ -81,9 +81,7 @@ export default function WeatherComponent() {
 
               {openIndex === index && (
                 <ForecastDetails>
-                  <p>강수량: {item.details.precipitation}</p>
-                  <p>습도: {item.details.humidity}</p>
-                  <p>바람: {item.details.wind}</p>
+                  <p>강수량 : {item.details.precipitation}</p>
                 </ForecastDetails>
               )}
             </WeeklyForecastItem>

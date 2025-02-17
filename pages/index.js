@@ -18,7 +18,8 @@ import WeatherComponent from "@components/WeatherComponent";
 export default function Home() {
   // const [hourlyForecast, setHourlyForecast] = useState([]); // ✅ 기본값 [] 설정
   // const [tenDayForecast, setTenDayForecast] = useState([]);
-  // const [loading, setLoading] = useState(true); // ✅ 로딩 상태 추가
+  const [loading, setLoading] = useState(false);
+  const [locationName, setLocationName] = useState("위치 찾기");
 
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -35,25 +36,41 @@ export default function Home() {
         },
         (error) => {
           console.error("❌ 위치 정보 가져오기 실패:", error);
-          // ✅ 위치 정보를 못 가져올 경우 기본값 (서울)
-          setLatitude(37.5665);
+          setLatitude(37.5665); // 서울 기본값
           setLongitude(126.978);
         },
       );
     }
   }, []);
 
+  // ✅ 🔍 검색 실행 함수
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return;
+
+    const { latitude, longitude, error } =
+      await getCoordinatesFromLocation(searchQuery);
+
+    if (error) {
+      alert("검색 결과를 찾을 수 없습니다.");
+      return;
+    }
+
+    setLatitude(latitude);
+    setLongitude(longitude);
+    setSearchOpen(false); // 검색창 닫기
+  };
+
   return (
     <PageContainer>
       <div className="container">
         {/* 검색 바 */}
-        <SearchContainer>
+        {/* <SearchContainer>
           <SearchInput
             type="text"
             placeholder="위치 찾기"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setSearchOpen(true)} // 입력 클릭 시 검색창 열기
+            onFocus={() => setSearchOpen(true)}
           />
           <SearchButton onClick={() => setSearchOpen(!searchOpen)}>
             <svg
@@ -72,18 +89,7 @@ export default function Home() {
               />
             </svg>
           </SearchButton>
-        </SearchContainer>
-
-        {/* 검색 결과 Dropdown (검색창이 열렸을 때만 보이도록) */}
-        {searchOpen && (
-          <Dropdown>
-            <p>서울</p>
-            <p>부산</p>
-            <p>대구</p>
-            <p>인천</p>
-            <p>광주</p>
-          </Dropdown>
-        )}
+        </SearchContainer> */}
 
         <WeatherLayout>
           {/* 왼쪽 레이아웃 */}

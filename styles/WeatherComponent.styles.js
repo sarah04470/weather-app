@@ -34,6 +34,7 @@ export const WeeklyForecastItem = styled.li`
     align-items: center;
     justify-content: space-between;
     gap: 40px;
+    padding-left: 6px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 12px;
     font-weight: 500;
@@ -91,9 +92,9 @@ export const ForecastToggle = styled.div`
 
 export const ForecastDetails = styled.div`
   margin-top: 10px;
-  padding: 10px;
+  padding: 20px 15px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 12px;
   color: #ccc;
 `;

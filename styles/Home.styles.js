@@ -10,7 +10,7 @@ export const PageContainer = styled.div`
 
   .container {
     width: 1200px;
-    height: 880px;
+    height: 780px;
     border-radius: 20px;
     background: #0c121e;
     padding: 40px;
