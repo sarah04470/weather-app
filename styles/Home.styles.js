@@ -9,6 +9,7 @@ export const PageContainer = styled.div`
   align-items: center;
 
   .container {
+    position: relative;
     width: 1200px;
     height: 780px;
     border-radius: 20px;
@@ -202,7 +203,7 @@ export const WeatherLayout = styled.div`
 `;
 
 export const FooterContainer = styled.footer`
-  width: fit-content;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
