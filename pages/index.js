@@ -108,7 +108,7 @@ export default function Home() {
             <p>
               단기예보 API :{" "}
               <a
-                href="http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
+                href="https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -118,7 +118,7 @@ export default function Home() {
             <p>
               중기예보 API :{" "}
               <a
-                href="http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa"
+                href="https://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa"
                 target="_blank"
                 rel="noopener noreferrer"
               >

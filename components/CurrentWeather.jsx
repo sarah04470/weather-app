@@ -11,6 +11,8 @@ export default function CurrentWeather() {
   const [temperature, setTemperature] = useState("N/A");
   const [loading, setLoading] = useState(false);
   const [localTime, setLocalTime] = useState("");
+  const [weatherCondition, setWeatherCondition] = useState("알 수 없음");
+  const [currentHour, setCurrentHour] = useState(new Date().getHours());
 
   useEffect(() => {
     // ✅ 타임존을 가져오는 함수
@@ -48,6 +50,8 @@ export default function CurrentWeather() {
         console.log("✅ 현재 위치 날씨 데이터:", detailedWeather);
 
         setTemperature(detailedWeather.actualTemp); // ✅ 현재 온도 적용
+        setWeatherCondition(detailedWeather.weatherCondition);
+        setCurrentHour(new Date().getHours());
       } catch (error) {
         console.error("❌ 날씨 데이터 가져오기 오류:", error);
       }
@@ -97,6 +101,20 @@ export default function CurrentWeather() {
     getUserLocation();
   }, []);
 
+  // ✅ 날씨 상태에 따른 아이콘 매핑
+  const weatherIcons = {
+    맑음:
+      currentHour >= 19 || currentHour < 7
+        ? "/images/moonlight.png"
+        : "/images/sunny.png",
+    "구름 많음": "/images/cloudy.png",
+    흐림: "/images/cloudy.png",
+    비: "/images/rainy.png",
+    눈: "/images/snowy.png",
+    "비 또는 눈": "/images/stormy.png",
+    "알 수 없음": "/images/sunny.png",
+  };
+
   return (
     <CurrentWeatherWrap className="current-weather">
       <div className="location">
@@ -135,10 +153,10 @@ export default function CurrentWeather() {
       </div>
       <div className="weather-img">
         <Image
-          src="/images/sunny.png"
-          alt="맑음 이미지"
-          width={60}
-          height={60}
+          src={weatherIcons[weatherCondition] || "/images/sunny.png"}
+          alt={`${weatherCondition} 이미지`}
+          width={100}
+          height={100}
           priority
         />
       </div>
