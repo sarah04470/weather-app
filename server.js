@@ -6,7 +6,10 @@ const morgan = require("morgan"); // ✅ HTTP 요청 로그 확인용
 
 const app = express();
 const PORT = process.env.PORT || 5000; // ✅ 기본 포트 5000
-const API_ORIGIN = process.env.ORIGIN || 3000; // ✅ 프론트엔드 도메인
+const API_ORIGIN =
+  process.env.NODE_ENV === "development"
+    ? 3000
+    : "https://weather-proxy-server-altl.onrender.com";
 const API_TARGET = "http://apis.data.go.kr/1360000"; // ✅ 기상청 API 원본 주소
 
 const cache = new Map();

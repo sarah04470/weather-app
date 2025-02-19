@@ -10,7 +10,10 @@ const nextConfig = {
     return [
       {
         source: "/api/weather/:path*", // 요청 URL
-        destination: "http://localhost:5000/api/weather/:path*", // 기상청 API URL
+        destination:
+          process.env.NODE_ENV === "development"
+            ? "http://localhost:5000/api/weather/:path*"
+            : "https://weather-proxy-server-altl.onrender.com/api/weather/:path*",
       },
     ];
   },
