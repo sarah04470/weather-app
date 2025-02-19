@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getLocationNameFromCoordinates } from "@lib/fetchLocationName";
 import { getCompleteForecast } from "@lib/getWeatherForecast";
 import { CurrentWeatherWrap } from "@styles/CurrentWeather.styles";
+import { GOOGLE_API_KEY } from "@constants/config";
 import Image from "next/image";
 
 export default function CurrentWeather() {
@@ -18,8 +19,9 @@ export default function CurrentWeather() {
     // ✅ 타임존을 가져오는 함수
     async function getUserTimezone(lat, lon) {
       try {
+        const timestamp = Math.floor(Date.now() / 1000);
         const response = await fetch(
-          `https://api.bigdatacloud.net/data/timezone-by-location?latitude=${lat}&longitude=${lon}&key=YOUR_API_KEY`,
+          `https://maps.googleapis.com/maps/api/timezone/json?location=${lat},${lon}&timestamp=${timestamp}&key=${GOOGLE_API_KEY}`,
         );
         const data = await response.json();
         updateTime(data.timezone);

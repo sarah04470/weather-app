@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 // import WeatherCard from "@components/WeatherCard";
 import {
   PageContainer,
-  SearchContainer,
-  SearchInput,
-  SearchButton,
-  Dropdown,
+  // SearchContainer,
+  // SearchInput,
+  // SearchButton,
+  // Dropdown,
   WeatherLayout,
   FooterContainer,
 } from "@styles/Home.styles";
@@ -41,21 +41,21 @@ export default function Home() {
   }, []);
 
   // ✅ 🔍 검색 실행 함수
-  const handleSearch = async () => {
-    if (!searchQuery.trim()) return;
+  // const handleSearch = async () => {
+  //   if (!searchQuery.trim()) return;
 
-    const { latitude, longitude, error } =
-      await getCoordinatesFromLocation(searchQuery);
+  //   const { latitude, longitude, error } =
+  //     await getCoordinatesFromLocation(searchQuery);
 
-    if (error) {
-      alert("검색 결과를 찾을 수 없습니다.");
-      return;
-    }
+  //   if (error) {
+  //     alert("검색 결과를 찾을 수 없습니다.");
+  //     return;
+  //   }
 
-    setLatitude(latitude);
-    setLongitude(longitude);
-    setSearchOpen(false); // 검색창 닫기
-  };
+  //   setLatitude(latitude);
+  //   setLongitude(longitude);
+  //   setSearchOpen(false); // 검색창 닫기
+  // };
 
   return (
     <PageContainer>

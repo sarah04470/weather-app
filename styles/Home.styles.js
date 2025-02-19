@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 
 export const PageContainer = styled.div`
   width: 100vw;
@@ -229,13 +228,15 @@ export const WeatherLayout = styled.div`
 `;
 
 export const FooterContainer = styled.footer`
-  position: relative;
+  position: absolute;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 20px 0;
-  margin: 0 auto;
   margin-top: 20px;
+  left: 0;
+  bottom: -80px;
   text-align: center;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
@@ -256,10 +257,6 @@ export const FooterContainer = styled.footer`
   }
 
   @media (max-width: 1200px) {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: -60px;
     padding: 0;
     margin: 0;
   }
